@@ -1,0 +1,52 @@
+const bundle = require('./src/bundle');
+const explode = require('./src/explode');
+const yargs = require('yargs');
+const argv = require('yargs')
+    .scriptName('mbsprite')
+    .usage('$0 <cmd> [args]')
+    .command(
+        'bundle spriteDir imageDir1x [imageDir2x]',
+        'Build a sprite sheet from a source directory and optional @2x directory.',
+        (yargs) => {
+            yargs
+                .positional('spriteDir', {
+                    type: 'string',
+                    describe:
+                        'Directory to write sprite.png, sprite.json, sprite@2x.png and sprite@2x.json to',
+                })
+                .positional('imageDir1x', {
+                    type: 'string',
+                    describe:
+                        'Directory containing .png files at 1x resolution',
+                })
+                .positional('imageDir2x', {
+                    type: 'string',
+                    describe:
+                        'Directory containing .png files at 2x resolution',
+                });
+        },
+        (argv) => {
+            bundle(argv);
+        }
+    )
+    .command(
+        'explode urlOrDirectory pngDirectory',
+        "Decompose a sprite sheet from a .json and .png into a directory of .png's",
+        (yargs) => {
+            yargs
+                .positional('urlOrDirectory', {
+                    describe:
+                        'Path to which .json, .png, @2x.json and @2x.png will be appended then fetched.',
+                })
+                .positional('pngDirectory', {
+                    describe:
+                        "Where to write output .png's to. The @2x versions will be written to <pngDirectory>@2x",
+                });
+        },
+        (argv) => {
+            explode(argv);
+        }
+    )
+    .demandCommand()
+    .help()
+    .wrap(yargs.terminalWidth()).argv;
