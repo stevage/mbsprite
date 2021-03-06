@@ -1,6 +1,6 @@
 {
   "name": "mbsprite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "mbsprite",
   "license": "MIT",
   "dependencies": {
@@ -25,5 +25,6 @@
     "spritesheet",
     "png",
     "images"
-  ]
+  ],
+  "bin": "./mbsprite"
 }
