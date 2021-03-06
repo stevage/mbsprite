@@ -1,6 +1,6 @@
 {
   "name": "mbsprite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "mbsprite",
   "license": "MIT",
   "dependencies": {
@@ -9,6 +9,21 @@
     "mkdirp": "^1.0.4",
     "yargs": "^16.2.0"
   },
-  "description":"Command line utilities for bundling and exploding Mapbox spritesheets to/from PNG files.",
-  "files": ["src/*", "mbsprite"]
+  "scripts": {
+    "start": "mbsprite"
+  },
+  "description": "Command line utilities for bundling and exploding Mapbox spritesheets to/from PNG files.",
+  "files": [
+    "src/*",
+    "mbsprite",
+    ".bin/"
+  ],
+  "keywords": [
+    "mapbox",
+    "mapbox-gl",
+    "sprite",
+    "spritesheet",
+    "png",
+    "images"
+  ]
 }
