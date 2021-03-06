@@ -1,14 +1,14 @@
 {
-  "name": "sprites",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "mbsprite",
+  "version": "0.1.0",
+  "main": "mbsprite",
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "axios": "^0.21.0",
-    "dotenv": "^8.2.0",
     "jimp": "^0.16.1",
     "mkdirp": "^1.0.4",
     "yargs": "^16.2.0"
-  }
+  },
+  "description":"Command line utilities for bundling and exploding Mapbox spritesheets to/from PNG files.",
+  "files": ["src/*", "mbsprite"]
 }

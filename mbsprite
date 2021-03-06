@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const bundle = require('./src/bundle');
 const explode = require('./src/explode');
 const yargs = require('yargs');
