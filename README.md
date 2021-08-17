@@ -25,3 +25,7 @@ To merge two spritesheets together, simply explode two sprite sheets into the sa
 If you have [`npx`](https://www.npmjs.com/package/npx) installed, you can simply run:
 
 `npx mbsprite <args...>`
+
+### Using with Figma
+
+To generate a spritesheet from icons in Figma, see the instructions in [Figmasset-export](npmjs.com/package/figmasset-export).

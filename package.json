@@ -12,6 +12,10 @@
   "scripts": {
     "start": "mbsprite"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevage/mbsprite"
+  },
   "description": "Command line utilities for bundling and exploding Mapbox spritesheets to/from PNG files.",
   "files": [
     "src/*",
