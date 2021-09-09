@@ -25,18 +25,22 @@ async function makeSprite(imagePaths, outDir, scale) {
         width = 0,
         rowHeight = 0;
     for (const [imageId, imagePath] of imagePaths) {
-        const image = await Jimp.read(imagePath);
-        if (x + image.bitmap.width > wrapWidth) {
-            x = 0;
-            y += rowHeight;
-            rowHeight = 0;
-        }
-        sprite[imageId] = getImageParams(image, x, y);
-        spriteImage.composite(image, x, y);
+        try {
+            const image = await Jimp.read(imagePath);
+            if (x + image.bitmap.width > wrapWidth) {
+                x = 0;
+                y += rowHeight;
+                rowHeight = 0;
+            }
+            sprite[imageId] = getImageParams(image, x, y);
+            spriteImage.composite(image, x, y);
 
-        x += image.bitmap.width;
-        width = Math.max(width, x);
-        rowHeight = Math.max(rowHeight, image.bitmap.height);
+            x += image.bitmap.width;
+            width = Math.max(width, x);
+            rowHeight = Math.max(rowHeight, image.bitmap.height);
+        } catch (e) {
+            console.error(`Couldn't load ${imagePath}: `, e);
+        }
     }
     spriteImage.crop(0, 0, width, y + rowHeight);
     mkdirp.sync(outDir);
@@ -54,6 +58,7 @@ async function bundle({ imageDir1x, imageDir2x, spriteDir }) {
     const imagePaths = (dir) =>
         fs
             .readdirSync(dir)
+            .filter((filename) => filename.match(/\.png$/))
             .map((filename) => [
                 path.basename(filename, '.png'),
                 path.join(dir, filename),
