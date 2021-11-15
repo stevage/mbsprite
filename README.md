@@ -29,3 +29,19 @@ If you have [`npx`](https://www.npmjs.com/package/npx) installed, you can simply
 ### Using with Figma
 
 To generate a spritesheet from icons in Figma, see the instructions in [Figmasset-export](npmjs.com/package/figmasset-export).
+
+### Using the sprite file in Mapbox GL JS or Maplibre GL JS
+
+1. Place the sprite files somewhere accessible to your web application. For instance, `https://example.com/sprite/sprite.json` (and `https://example.com/sprite/sprite.png` etc).
+2. Modify your style file to refer to the part of the path without the extension:
+
+
+```
+{
+  "version": 8,
+  "sprite": "https://example.com/sprite/sprite",
+  ...
+}
+```
+
+Note that the path to the sprite must be absolute (it can't be relative, like `/sprite`).
